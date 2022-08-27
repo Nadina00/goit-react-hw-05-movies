@@ -1,4 +1,4 @@
-import React, {Suspense } from 'react';
+import React, {lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { MovieDetailts } from './pages/MovieDetailts';
 import { NotFound } from './pages/NotFound';
@@ -6,8 +6,8 @@ import { MovieCast } from 'components/MoviesDetails/MovieCast';
 import { MovieReviews } from 'components/MoviesDetails/MovieReviews';
 import { Loader } from 'components/Loader/Loader';
 import { Navigation } from 'components/Navigation/Navigation';
-import { Home } from 'pages/Home';
-import { Movies } from 'pages/Movies';
+const Home = lazy(() => import("./pages/Home"));
+const Movies = lazy(() => import("./pages/Movies"));
 
 
 export default function App() {
