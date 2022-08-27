@@ -1,0 +1,23 @@
+.nav {
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+  }
+  
+  .navLink {
+    color: black;
+    margin-left: 20px;
+    text-decoration: unset;
+  }
+  
+  .navActive {
+    color: blue;
+  }
+
+  .link{
+    color: black;
+    margin-left: 20px;
+    text-decoration: unset;
+    margin-right: 20px;
+  }
