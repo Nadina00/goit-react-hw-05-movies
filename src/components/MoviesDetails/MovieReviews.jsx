@@ -4,7 +4,8 @@ import { fetchMoviesByReviews } from 'components/services/ApiServices';
 import { Loader } from 'components/Loader/Loader';
 import { loadingStatus } from 'components/services/loadingStatus';
 import styles from './MovieCast.module.css'
-export const MovieReviews = () => {
+
+export default function MovieReviews() {
   const [reviews, setReviews] = useState([]);
   let { movieId } = useParams('');
   const [error, setError] = useState('');

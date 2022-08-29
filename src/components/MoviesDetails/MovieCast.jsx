@@ -6,7 +6,7 @@ import { Loader } from 'components/Loader/Loader';
 import { loadingStatus } from 'components/services/loadingStatus';
 import styles from './MovieCast.module.css'
 
-export const MovieCast = () => {
+export default function MovieCast (){
   const [movieCasts, setMovieCast] = useState([]);
   let { movieId } = useParams('');
   const [error, setError] = useState('');

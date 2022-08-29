@@ -7,7 +7,7 @@ export const Navigation = () => (
       exact
       to="/"
       className={styles.navLink}
-      activeClassName={styles.navActive}
+      
     >
       Home
     </NavLink>
@@ -15,7 +15,7 @@ export const Navigation = () => (
     <NavLink
       to="/movies"
       className={styles.navLink}
-      activeClassName={styles.navActive}
+     
     >
       Movies
     </NavLink>

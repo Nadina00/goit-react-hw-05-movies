@@ -6,7 +6,7 @@ import { Loader } from 'components/Loader/Loader';
 import { loadingStatus } from 'components/services/loadingStatus';
 import styles from 'components/Navigation/Navigation.module.css'
 
-export const MovieDetailts = () => {
+export default function MovieDetailts (){
   const [movie, setMovie] = useState({});
   const { movieId } = useParams('');
   const [error, setError] = useState('');
