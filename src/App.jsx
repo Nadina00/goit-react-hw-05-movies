@@ -1,5 +1,5 @@
 import React, {lazy, Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { NotFound } from './pages/NotFound';
 import { Loader } from 'components/Loader/Loader';
 import { Navigation } from 'components/Navigation/Navigation';
@@ -14,14 +14,14 @@ export default function App() {
     <div>
       <Navigation />
       <Suspense fallback={<Loader />}>
-        <Switch>
+        <Routes>
           <Route  path="/" exact="true" ><Home /></Route>
           <Route path="/movies/:movieId" ><MovieDetailts /></Route>
           <Route path="/movies/:movieId/cast" ><MovieCast/></Route>
           <Route path="/movies/:movieId/reviews" ><MovieReviews /></Route>
           <Route path="/movies" exact="true"> <Movies /></Route>
           <Route path="*" ><NotFound /></Route>
-        </Switch>
+        </Routes>
       </Suspense>
     </div>
   );
