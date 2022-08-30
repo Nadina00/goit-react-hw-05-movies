@@ -1,6 +1,8 @@
 import React from 'react';
 import { GalleryFilms } from 'components/Home/GalleryFilms';
 
-export default function Home() {
+ const Home = () => {
   return <GalleryFilms />;
 };
+
+export default Home;

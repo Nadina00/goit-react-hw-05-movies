@@ -5,7 +5,7 @@ import { Loader } from 'components/Loader/Loader';
 import { loadingStatus } from 'components/services/loadingStatus';
 import styles from './MovieCast.module.css'
 
-export default function MovieReviews() {
+const MovieReviews = () => {
   const [reviews, setReviews] = useState([]);
   let { movieId } = useParams('');
   const [error, setError] = useState('');
@@ -51,3 +51,4 @@ export default function MovieReviews() {
     );
   }
 };
+export default MovieReviews

@@ -6,7 +6,7 @@ import { Loader } from 'components/Loader/Loader';
 import { loadingStatus } from 'components/services/loadingStatus';
 import styles from 'components/Navigation/Navigation.module.css'
 
-export default function MovieDetailts (){
+ const MovieDetailts = () =>{
   const [movie, setMovie] = useState({});
   const { movieId } = useParams('');
   const [error, setError] = useState('');
@@ -51,3 +51,4 @@ export default function MovieDetailts (){
     );
   }
 };
+export default MovieDetailts;

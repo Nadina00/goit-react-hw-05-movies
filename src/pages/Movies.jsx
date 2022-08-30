@@ -7,7 +7,7 @@ import { Loader } from 'components/Loader/Loader';
 import { loadingStatus } from 'components/services/loadingStatus';
 import styles from 'components/Home/GalleryFilm.module.css'
 
-export default function Movies () {
+ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -74,3 +74,4 @@ export default function Movies () {
     );
   
 };
+export default Movies;
