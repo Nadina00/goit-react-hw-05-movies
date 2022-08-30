@@ -40,7 +40,7 @@ export const GalleryFilms = () => {
     <h2>{error.message}</h2>;
   }
 
-  console.log(films);
+ 
   if (status === loadingStatus.RESOLVED){
   return (
     <div>
