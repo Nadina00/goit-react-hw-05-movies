@@ -1,5 +1,5 @@
 import React from 'react';
-import { BASE_IMG_URL } from '../../services/ApiBaseUrl';
+import { BASE_IMG_URL } from 'services/ApiBaseUrl';
 import styles from './CardFilm.module.css'
 
 

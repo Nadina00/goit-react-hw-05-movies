@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { fetchMoviesDay } from '../../services/ApiServices';
+import { fetchMoviesDay } from 'services/ApiServices';
 import { CardFilm } from './CardFilm';
 import { Button } from '../Button/Button';
 import { Loader } from 'components/Loader/Loader';
