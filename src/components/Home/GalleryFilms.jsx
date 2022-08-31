@@ -14,8 +14,7 @@ export const GalleryFilms = () => {
   const [status, setStatus] = useState(loadingStatus.IDLE);
   const location = useLocation()
 
-  console.log(location)
-
+  
   useEffect(() => {
     setStatus(loadingStatus.PENDING);
     fetchMoviesDay(page)
