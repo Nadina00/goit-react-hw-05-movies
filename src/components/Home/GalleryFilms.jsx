@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { fetchMoviesDay } from '../services/ApiServices';
+import { Link, useLocation } from 'react-router-dom';
+import { fetchMoviesDay } from '../../services/ApiServices';
 import { CardFilm } from './CardFilm';
 import { Button } from '../Button/Button';
 import { Loader } from 'components/Loader/Loader';
-import { loadingStatus } from 'components/services/loadingStatus';
+import { loadingStatus } from 'services/loadingStatus';
 import styles from './GalleryFilm.module.css'
 
 export const GalleryFilms = () => {
@@ -12,6 +12,9 @@ export const GalleryFilms = () => {
   const [films, setFilms] = useState([]);
   const [error, setError] = useState('');
   const [status, setStatus] = useState(loadingStatus.IDLE);
+  const location = useLocation()
+
+  console.log(location)
 
   useEffect(() => {
     setStatus(loadingStatus.PENDING);
@@ -46,7 +49,7 @@ export const GalleryFilms = () => {
     <div>
       <ul className={styles.gallery}>
         {films.map(film => (
-          <Link to={`/movies/${film.id}`} movieId={film.id} key={film.id}>
+          <Link to={`/movies/${film.id}`} movieId={film.id} key={film.id} state={{from: location}}>
             <CardFilm film={film} key={film.id} />
           </Link>
         ))}

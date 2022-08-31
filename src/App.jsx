@@ -24,9 +24,10 @@ export default function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movies/:movieId" element={<MovieDetailts />} />
-          <Route path="/movies/:movieId/cast" element={<MovieCast />} />
-          <Route path="/movies/:movieId/reviews" element={<MovieReviews />} />
+          <Route path="/movies/:movieId" element={<MovieDetailts />} >
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
+          </Route>
           <Route path="/movies" element={<Movies />} />
           <Route element={<NotFound />} />
         </Routes>

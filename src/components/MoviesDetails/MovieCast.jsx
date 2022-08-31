@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams} from 'react-router-dom';
-import { fetchMoviesByCredits } from 'components/services/ApiServices';
-import { BASE_IMG_URL } from 'components/services/ApiBaseUrl';
+import { useLocation, useParams, Link} from 'react-router-dom';
+import { fetchMoviesByCredits } from 'services/ApiServices';
+import { BASE_IMG_URL } from 'services/ApiBaseUrl';
 import { Loader } from 'components/Loader/Loader';
-import { loadingStatus } from 'components/services/loadingStatus';
+import { loadingStatus } from 'services/loadingStatus';
 import styles from './MovieCast.module.css'
 
 const MovieCast = () =>{
@@ -11,6 +11,9 @@ const MovieCast = () =>{
   let { movieId } = useParams('');
   const [error, setError] = useState('');
   const [status, setStatus] = useState(loadingStatus.IDLE);
+  const location = useLocation();
+  
+ 
 
   useEffect(() => {
     setStatus(loadingStatus.PENDING);
@@ -37,7 +40,7 @@ const MovieCast = () =>{
     <h2>{error.message}</h2>;
   }
   if (status === loadingStatus.RESOLVED) {
-    return (
+    return (<div>
       <ul className={styles.CastsList}>
         {movieCasts.map(movieCast => (
           <li key={movieCast.id} className={styles.CastsItem}>
@@ -47,6 +50,7 @@ const MovieCast = () =>{
           </li>
         ))}
       </ul>
+       </div>
     );
   }
 };

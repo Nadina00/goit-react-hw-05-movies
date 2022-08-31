@@ -1,16 +1,18 @@
 import React, { useState, useEffect} from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { fetchMoviesByDetails } from 'components/services/ApiServices';
-import { BASE_IMG_URL } from '../components/services/ApiBaseUrl';
+import { Link, useParams, Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { fetchMoviesByDetails } from 'services/ApiServices';
+import { BASE_IMG_URL } from '../services/ApiBaseUrl';
 import { Loader } from 'components/Loader/Loader';
-import { loadingStatus } from 'components/services/loadingStatus';
+import { loadingStatus } from 'services/loadingStatus';
 import styles from 'components/Navigation/Navigation.module.css'
 
- const MovieDetailts = () =>{
+   
+  const MovieDetailts = () =>{
   const [movie, setMovie] = useState({});
   const { movieId } = useParams('');
   const [error, setError] = useState('');
   const [status, setStatus] = useState(loadingStatus.IDLE);
+ const location = useLocation()
 
   useEffect(() => {
     setStatus(loadingStatus.PENDING);
@@ -25,6 +27,10 @@ import styles from 'components/Navigation/Navigation.module.css'
       });
   }, [movieId]);
 
+
+const backLink = location.state?.from ?? '/'
+
+
   if (status === loadingStatus.PENDING) {
     return <Loader loader={Loader} />;
   }
@@ -32,7 +38,7 @@ import styles from 'components/Navigation/Navigation.module.css'
   if (status === loadingStatus.REJECTED) {
     <h2>{error.message}</h2>;
   }
-  console.log(movie)
+  
   if (status === loadingStatus.RESOLVED) {
     return (
       <div>
@@ -41,12 +47,20 @@ import styles from 'components/Navigation/Navigation.module.css'
         <p> {movie.overview} </p>
         <p>Vote: {movie.vote_average}</p>
         <p>Data: {movie.release_date}</p>
-        <Link to={`/movies/${movie.id}/cast`} movieId={movie.id} className={styles.link}>
-          Cast
-        </Link>
-        <Link to={`/movies/${movie.id}/reviews`} movieId={movie.id} className={styles.link}>
-          Reviews
-        </Link>
+       
+        <ul className={styles.nav}>
+        
+        <li>
+          <Link to="cast"  className={styles.link} state = {{from: location}}>Cast</Link>
+        </li>
+        <li>
+          <Link to="reviews"  className={styles.link} state = {{from: location}}>Reviews</Link>
+        </li>
+        
+      </ul>
+      
+      <Outlet />
+      <Link to={backLink}  className={styles.link} >Go back</Link>
       </div>
     );
   }

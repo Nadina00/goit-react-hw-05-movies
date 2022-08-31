@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchMoviesByReviews } from 'components/services/ApiServices';
+import { useParams, useLocation, Link } from 'react-router-dom';
+import { fetchMoviesByReviews } from 'services/ApiServices';
 import { Loader } from 'components/Loader/Loader';
-import { loadingStatus } from 'components/services/loadingStatus';
+import { loadingStatus } from 'services/loadingStatus';
 import styles from './MovieCast.module.css'
 
 const MovieReviews = () => {
@@ -10,6 +10,7 @@ const MovieReviews = () => {
   let { movieId } = useParams('');
   const [error, setError] = useState('');
   const [status, setStatus] = useState(loadingStatus.IDLE);
+  const location = useLocation();
 
     useEffect(() => {
       setStatus(loadingStatus.PENDING);
@@ -39,7 +40,7 @@ const MovieReviews = () => {
   }
 
   if (status === loadingStatus.RESOLVED) {
-    return (
+    return (<div>
       <ul className={styles.CastsList}>
         {reviews.map(review => (
           <li key={review.id} className={styles.CastsItem}>
@@ -48,6 +49,8 @@ const MovieReviews = () => {
           </li>
         ))}
       </ul>
+      
+      </div>
     );
   }
 };

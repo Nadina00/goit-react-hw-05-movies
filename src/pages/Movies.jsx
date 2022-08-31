@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { fetchMoviesByName } from 'components/services/ApiServices';
+import { fetchMoviesByName } from 'services/ApiServices';
 import { useSearchParams, Link} from 'react-router-dom';
 import { CardFilm } from 'components/Home/CardFilm';
 import { Button } from 'components/Button/Button';
 import { Loader } from 'components/Loader/Loader';
-import { loadingStatus } from 'components/services/loadingStatus';
+import { loadingStatus } from 'services/loadingStatus';
 import styles from 'components/Home/GalleryFilm.module.css'
 
  const Movies = () => {
@@ -15,8 +15,7 @@ import styles from 'components/Home/GalleryFilm.module.css'
   const [error, setError] = useState('');
   const [status, setStatus] = useState(loadingStatus.IDLE);
   
- 
-   
+
   useEffect(() => {
       if(name === null) return;
       if (name === ''){
@@ -62,14 +61,15 @@ import styles from 'components/Home/GalleryFilm.module.css'
           <button type="submit">Search</button>
         </form>
         {(status === loadingStatus.RESOLVED) &&
-        (<ul className={styles.gallery}>
+        (<div>
+        <ul className={styles.gallery}>
           {movies.map(movie => (
-            <Link to={`/movies/${movie.id}`} movieId={movie.id}>
+            <Link to={`/movies/${movie.id}`} movieId={movie.id} key={movie.id}>
               <CardFilm film={movie} key={movie.id} />
             </Link>
           ))}
-        </ul>)}
-        <Button onClick={loreMore}>Load more</Button>
+        </ul>
+        <Button onClick={loreMore}>Load more</Button></div>)}
       </>
     );
   
