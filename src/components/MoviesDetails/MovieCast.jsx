@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useParams, Link} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import { fetchMoviesByCredits } from 'services/ApiServices';
 import { BASE_IMG_URL } from 'services/ApiBaseUrl';
 import { Loader } from 'components/Loader/Loader';
@@ -11,7 +11,7 @@ const MovieCast = () =>{
   let { movieId } = useParams('');
   const [error, setError] = useState('');
   const [status, setStatus] = useState(loadingStatus.IDLE);
-  const location = useLocation();
+  
   
  
 

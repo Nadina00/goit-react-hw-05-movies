@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useLocation, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { fetchMoviesByReviews } from 'services/ApiServices';
 import { Loader } from 'components/Loader/Loader';
 import { loadingStatus } from 'services/loadingStatus';
@@ -10,7 +10,7 @@ const MovieReviews = () => {
   let { movieId } = useParams('');
   const [error, setError] = useState('');
   const [status, setStatus] = useState(loadingStatus.IDLE);
-  const location = useLocation();
+  
 
     useEffect(() => {
       setStatus(loadingStatus.PENDING);

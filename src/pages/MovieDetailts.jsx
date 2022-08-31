@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { Link, useParams, Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useParams, Outlet, useLocation } from 'react-router-dom';
 import { fetchMoviesByDetails } from 'services/ApiServices';
 import { BASE_IMG_URL } from '../services/ApiBaseUrl';
 import { Loader } from 'components/Loader/Loader';
@@ -12,7 +12,7 @@ import styles from 'components/Navigation/Navigation.module.css'
   const { movieId } = useParams('');
   const [error, setError] = useState('');
   const [status, setStatus] = useState(loadingStatus.IDLE);
- const location = useLocation()
+  const location = useLocation()
 
   useEffect(() => {
     setStatus(loadingStatus.PENDING);
