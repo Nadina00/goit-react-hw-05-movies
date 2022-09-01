@@ -28,7 +28,7 @@ import styles from 'components/Navigation/Navigation.module.css'
   }, [movieId]);
 
 
-const backLink = location.state?.from ?? '/'
+  const backLink = location.state?.from ?? "/"
 
 
   if (status === loadingStatus.PENDING) {
@@ -51,14 +51,13 @@ const backLink = location.state?.from ?? '/'
         <ul className={styles.nav}>
         
         <li>
-          <Link to="cast"  className={styles.link} state = {{from: location}}>Cast</Link>
+          <Link to="cast"  className={styles.link} state = {{from: location.state.from}}>Cast</Link>
         </li>
         <li>
-          <Link to="reviews"  className={styles.link} state = {{from: location}}>Reviews</Link>
+          <Link to="reviews"  className={styles.link} state = {{from: location.state.from}}>Reviews</Link>
         </li>
         
       </ul>
-      
       <Outlet />
       <Link to={backLink}  className={styles.link} >Go back</Link>
       </div>

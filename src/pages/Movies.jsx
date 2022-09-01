@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchMoviesByName } from 'services/ApiServices';
-import { useSearchParams, Link} from 'react-router-dom';
+import { useSearchParams, Link, useLocation} from 'react-router-dom';
 import { CardFilm } from 'components/Home/CardFilm';
 import { Button } from 'components/Button/Button';
 import { Loader } from 'components/Loader/Loader';
@@ -14,8 +14,9 @@ import styles from 'components/Home/GalleryFilm.module.css'
   const name = searchParams.get('name');
   const [error, setError] = useState('');
   const [status, setStatus] = useState(loadingStatus.IDLE);
+  const location = useLocation()
   
-
+  
   useEffect(() => {
       if(name === null) return;
       if (name === ''){
@@ -64,7 +65,7 @@ import styles from 'components/Home/GalleryFilm.module.css'
         (<div>
         <ul className={styles.gallery}>
           {movies.map(movie => (
-            <Link to={`/movies/${movie.id}`} movieId={movie.id} key={movie.id}>
+            <Link to={`/movies/${movie.id}`} movieId={movie.id} key={movie.id} state = {{from: location}} >
               <CardFilm film={movie} key={movie.id} />
             </Link>
           ))}
